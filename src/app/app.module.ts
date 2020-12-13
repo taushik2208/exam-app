@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { AllUserDetailsComponent } from './all-user-details/all-user-details.component';
 import { UserComponent } from './user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { UserComponent } from './user/user.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

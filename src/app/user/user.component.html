@@ -1,1 +1,34 @@
-<p>user works!</p>
+<form  class="form container" [formGroup]="userDetails">
+    <h4 class="display-4 text primary">  candidate details <hr class="bg-primary"></h4>
+    <div class="form-row">
+        <div class="form-group col-12 col-md-6">
+            <label for="fname">First Name</label>
+            <input type="text" formControlName="fname" id="fname" class="form-control" placeholder="" [(ngModel)]="user.fname">
+            <div *ngIf="submitted && f.fname.errors"> 
+                <small *ngIf="f.fname.errors.required" class="text-danger">🙄 First Name Required</small>    
+            </div>
+            
+        </div>
+        <div class="form-group col-12 col-md-6">
+            <label for="lname">Last name</label>
+            <input type="text" formControlName="lname" id="lname" class="form-control" placeholder="" [(ngModel)]="user.lname">
+            <div *ngIf="submitted && f.lname.errors" class=""> 
+                <small *ngIf="f.lname.errors.required" class="text-danger">🙄 Last Name Required</small>    
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" id="email" class="form-control" placeholder="" [(ngModel)]="user.email">
+            <div *ngIf="submitted && f.fname.errors.required" class=""> 
+                <small class="text-danger">🙄 Email Required</small>   
+            </div>
+            <div *ngIf="submitted && f.fname.errors.email" class=""> 
+               <small class="text-danger">🙄 Enter valid email </small>   
+            </div>
+        </div>
+        <div class="form-inline mt-3">
+            <button type="submit" class="btn btn-primary mr-2" (click)="submit()">Submit</button>
+            <button type="reset" class="btn btn-danger" (click)="reset()">Reset</button>
+        </div>
+    </div>
+</form>
