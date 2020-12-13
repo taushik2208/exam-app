@@ -19,16 +19,21 @@
         <div class="form-group col-12">
             <label for="email">Email</label>
             <input type="email" formControlName="email" id="email" class="form-control" placeholder="" [(ngModel)]="user.email">
-            <div *ngIf="submitted && f.fname.errors.required" class=""> 
+            <div *ngIf="submitted && f.email.errors.required" class=""> 
                 <small class="text-danger">🙄 Email Required</small>   
             </div>
-            <div *ngIf="submitted && f.fname.errors.email" class=""> 
+            <div *ngIf="submitted && f.email.errors.email" class=""> 
                <small class="text-danger">🙄 Enter valid email </small>   
             </div>
+        </div>
+        <div  class="text-primary mt-2 col-12 rounded text-left text-res"> 
+            <span class="badge badge-info btn-sm py-2 mr-2 rounded"> Note 👉 </span> 
+            You must fill your details to proceed form the test
         </div>
         <div class="form-inline mt-3">
             <button type="submit" class="btn btn-primary mr-2" (click)="submit()">Submit</button>
             <button type="reset" class="btn btn-danger" (click)="reset()">Reset</button>
         </div>
     </div>
+   
 </form>

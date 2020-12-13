@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserDetail } from '../model/userData';
 @Component({
   selector: 'app-user',
@@ -7,10 +8,11 @@ import { UserDetail } from '../model/userData';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  // tslint:disable:no-inferrable-types
   userDetails: FormGroup;
   user: UserDetail = new UserDetail();
   submitted: boolean = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.userDetails = this.formBuilder.group({
@@ -27,6 +29,10 @@ export class UserComponent implements OnInit {
   submit(): any {
     this.submitted = true;
     console.log(this.user);
+    if (this.userDetails.valid) {
+      const link = `test/${this.user.email}`;
+      this.router.navigate([link])
+    }
   }
   // on reset
   reset(): any {
