@@ -7,7 +7,7 @@ import { QuestionsComponent } from './questions/questions.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'home', component: MainComponent},
+  {path: 'main', component: MainComponent},
   {path: 'user', component: UserComponent},
   {path: 'alluser', component: AllUserDetailsComponent},
   {path: 'test', component: QuestionsComponent}
