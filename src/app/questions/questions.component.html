@@ -1,1 +1,20 @@
-<p>questions works!</p>
+<div class="container mt-4">
+    <div class="jumbotron jumbotron-fluid px-4">
+        <h1 class="display-4 ">{{ questionArray[pageload].id }} {{ questionArray[pageload].qstn }}</h1>
+        <!-- <p class="lead">{{ questionArray[pageload].qstn }}</p> -->
+        <hr class="my-2">
+        <p>Choose any 1 from the following options</p>
+        <div class="input-group mb-1" *ngFor="let options of questionArray[pageload].options">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" name="opt" aria-label="Radio button for following text input">
+              </div>
+            </div>
+            <input type="text" class="form-control" aria-label="Text input with radio button"  value={{options}}>
+        </div>
+        <p class="lead mt-3">
+            <a class="btn btn-primary btn-lg mr-2"  role="button" (click)="next()">Next</a>
+            <a class="btn btn-warning btn-lg" role="button">Skip</a>
+        </p>
+    </div>
+</div>

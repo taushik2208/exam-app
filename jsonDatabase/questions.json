@@ -1,0 +1,68 @@
+[
+    {
+       "id": 1,
+       "qstn": "Who wrote the national anthem of India ?",
+       "options": [
+          "Bankim Chandra",
+          "Rabindranath Tagore",
+          "Julius Ceaser",
+          "Javed Akhter"
+       ],
+       "correct": 1
+    },
+    {
+       "id": 2,
+       "qstn": "Which animal is called ship of the desert ?",
+       "options": [
+          "Side Winder",
+          "Rat",
+          "Camel",
+          "Mongoose"
+       ],
+       "correct": 2
+    },
+    {
+       "id": 3,
+       "qstn": "In which continent India is located ?",
+       "options": [
+          "North America",
+          "Europe",
+          "Africa",
+          "Asia"
+       ],
+       "correct": 3
+    },
+    {
+       "id": 4,
+       "qstn": "The actor who played Harry Potter in Harry Potter series",
+       "options": [
+          "Rupert Grint",
+          "Daniel Radcliffe",
+          "Tom Hanks",
+          "Edward Norton","Hillary"
+       ],
+       "correct": 1
+    },
+    {
+       "id": 5,
+       "qstn": "Who killed Julius Ceaser ?",
+       "options": [
+          "Brutus",
+          "Juliet",
+          "Cuppunius",
+          "Marcus Aurelius"
+       ],
+       "correct": 0
+    },
+    {
+       "id": 6,
+       "qstn": "What is  A in MEAN stack ?",
+       "options": [
+          "And",
+          "Async",
+          "Attribute",
+          "Angular"
+       ],
+       "correct": 3
+    }
+ ]

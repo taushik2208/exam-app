@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
     console.log(this.user);
     if (this.userDetails.valid) {
       const link = `test/${this.user.email}`;
-      this.router.navigate([link])
+      this.router.navigate([link]);
     }
   }
   // on reset

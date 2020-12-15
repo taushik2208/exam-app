@@ -69,7 +69,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "exam-app:build:production"
+              "browserTarget": "exam-app:build:production",
+              "proxyConfig": "proxy.config.json"
             }
           }
         },
