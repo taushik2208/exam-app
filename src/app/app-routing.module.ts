@@ -1,4 +1,3 @@
-import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
@@ -6,8 +5,7 @@ import { AllUserDetailsComponent } from './all-user-details/all-user-details.com
 import { QuestionsComponent } from './questions/questions.component';
 
 const routes: Routes = [
-  {path: '', component: MainComponent},
-  {path: 'main', component: MainComponent},
+  {path: '', component: UserComponent},
   {path: 'user', component: UserComponent},
   {path: 'alluser', component: AllUserDetailsComponent},
   {path: 'test/:email', component: QuestionsComponent}

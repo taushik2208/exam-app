@@ -1,40 +1,43 @@
 const fs = require('fs');
 const app = require('express')();
 const cors = require('cors');
+const bodyParser = require("body-parser");
+app.use(bodyParser());
 const questions = "questions.json";
-const userData = "userData.json";
-let jsonString;
+const userData = "userdata.json";
+let jsonString = [];
 
 
 app.use(cors({
     origin: "http://localhost:4200"
 }));
 
-// const middlewareFn=(req,res,next)=>{
-//     console.log('MiddleWare fun Called');
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-type, Accept");
-//      // res.status(500).send("Invalid request");
-//     next();
-// }
-// app.use(middlewareFn);
+const middlewareFn=(req,res,next)=>{
+    // console.log('MiddleWare fun Called');
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-type, Accept");
+     // res.status(500).send("Invalid request");
+    next();
+}
+app.use(middlewareFn);
 
 // function to read data
 const readData = (filename) => {
-    fs.readFile(`../jsonDatabase/${filename}`, "utf-8", (err, data) => {
+    fs.readFile("../jsonDatabase/"+filename, "utf-8", (err, data) => {
         if(err) {
             return err;
-        } else {
-            jsonString = JSON.parse(data);
-            console.log(jsonString);
-        }
+        } 
+        jsonString = JSON.parse(data);
+        return jsonString;
     })
 }
 
 // function to write data
 const writeData = (dataArray, fileName) => {
-    fs.writeFile(fileName, dataArray, (err) => { 
-        const code =  err ? false : true; 
+    let code;
+    fs.writeFile("../jsonDatabase/"+fileName, JSON.stringify(dataArray), (err) => { 
+        code =  err ? false : true;
+
     });
     return code;
 }
@@ -50,15 +53,22 @@ app.get("/api/userdata", (req,res) => {
 })
 
 app.post("/api/createuser", (req,res) => {
-    const data = req.body;
-    readData(userData);
-    const mailSearch = jsonString.find(obj => obj.email === data.email);
-    if (mailSearch !== undefined) {
-        jsonString.push(data);
-        writeData(jsonString, userData) ? res.send("User Created Successfully") : res.send("Error while creating user !");
-    } else {
-        res.send(false);
-    }
+    const dataHead = req.body;
+    let dataArray = [];
+    fs.readFile("../jsonDatabase/userdata.json", "utf-8", (err,data) => {
+           
+        dataArray = JSON.parse(data);
+        console.log(dataHead,dataArray)
+        const findVar = dataArray.findIndex( 
+            obj => obj.email === dataHead.email
+        );
+        if ( findVar === -1) {
+            dataArray.push(dataHead);
+            console.log(dataArray);
+            writeData(dataArray,userData);
+        }
+     })
+  
 }) // send false if user exist
 
 app.put("/api/score", (req,res) => {

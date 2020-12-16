@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDetail } from '../model/userData';
+import { UserService } from '../service/user.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -12,7 +13,11 @@ export class UserComponent implements OnInit {
   userDetails: FormGroup;
   user: UserDetail = new UserDetail();
   submitted: boolean = false;
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.userDetails = this.formBuilder.group({
@@ -30,6 +35,9 @@ export class UserComponent implements OnInit {
     this.submitted = true;
     console.log(this.user);
     if (this.userDetails.valid) {
+      this.userService.createUser(this.user).subscribe(
+        result => console.log(result)
+      );
       const link = `test/${this.user.email}`;
       this.router.navigate([link]);
     }

@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(user: UserDetail): Observable<UserDetail>{
-    return this.http.post<UserDetail>('http://localhost:4200/create', user);
+    return this.http.post<UserDetail>('http://localhost:4200/api/createuser', user);
   }
 
   getAllUser(): Observable<UserDetail[]> {
