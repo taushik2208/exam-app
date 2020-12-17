@@ -1,0 +1,6 @@
+1. run node server 
+    > cd api 
+    > node apirest.js
+
+2. run angular server ( proxy configured with port 4200 and 3000)
+    > npm start
