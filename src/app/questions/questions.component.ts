@@ -38,7 +38,6 @@ export class QuestionsComponent implements OnInit {
       const { pageload, questionArray, selectedOption } = this;
       if (selectedOption !== '') {
         if (pageload <= questionArray.length) {
-          this.pageload++;
           const index = questionArray[pageload].options.findIndex(str => str === selectedOption);
           if (index === questionArray[pageload].correct){
             this.score += 10;
@@ -47,12 +46,13 @@ export class QuestionsComponent implements OnInit {
         } else {
           alert('Exam Completed');
         }
+        this.pageload++;
       } else {
         alert('Please Select an option');
       }
   }
   skip(): void {
-    if (this.pageload === this.questionArray.length) {
+    if (this.pageload <= this.questionArray.length) {
       this.pageload++;
     } else {
       alert('No more Questions left to skip');
